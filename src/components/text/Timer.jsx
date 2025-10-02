@@ -1,6 +1,6 @@
-export function Timer()
+export function Timer({ time })
 {
     return <>
-        <p className="defaultText">timer: 60s</p>
+        <p className="defaultText">timer: {time}s</p>
     </>
 }

@@ -5,7 +5,7 @@ import { Start } from "./pages/Start.jsx";
 import { useState } from "react";
 
 function App() {
-  const [currantPage, setCurrentPage] = useState('result');
+  const [currantPage, setCurrentPage] = useState('game');
 
   return(
     <>

@@ -15,8 +15,8 @@ export function Game(){
 
     return <>
         <div className="centerGameContainer">
-            <Timer></Timer>
-            <ExcerciseText></ExcerciseText>
+            <Timer time={ timer }></Timer>
+            <ExcerciseText exercise={ exercise }></ExcerciseText>
             {
             answers.map((ans) => (
                 <AnswerButton

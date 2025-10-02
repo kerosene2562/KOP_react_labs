@@ -1,6 +1,6 @@
-export function ExcerciseText()
+export function ExcerciseText({ exercise })
 {
     return <>
-        <p className="defaultText">71+34=</p>
+        <p className="defaultText">{ exercise }</p>
     </>
 }
