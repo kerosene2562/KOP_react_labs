@@ -2,7 +2,7 @@
 
 ### Було зібрано каркас гри: 
 - створено базові [сторінки](/src/pages/)
-- базові [стани-плейсхолдери](https://github.com/kerosene2562/KOP_react_labs/blob/main/src/pages/Game.jsx#L5-L7)
+- базові [стани-плейсхолдери](https://github.com/kerosene2562/KOP_react_labs/blob/main/src/pages/Game.jsx#L5-L7) а також [тут](https://github.com/kerosene2562/KOP_react_labs/blob/main/src/pages/Start.jsx#L5)
 - додано початкові [стилі](/src/styles/index.css)
 - створено [компоненти](/src/components/) для перевикористання
 
