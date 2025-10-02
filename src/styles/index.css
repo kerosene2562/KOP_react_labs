@@ -1,0 +1,57 @@
+.startButton{
+    width: 300px;
+    height: 50px;
+    background-color: yellow;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+.defaultText{
+    font-size: 30px;
+}
+
+.answerButton{
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    background-color: rgb(86, 255, 114);
+    font-size: 30px;
+    margin: 10px;
+}
+
+.resBox{
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 600px;
+    margin: calc(25% - 150px) auto;
+    padding: 50px;
+    border-radius: 10px;
+    border: 10px dashed rgb(111, 188, 255);
+}
+
+.centerGameContainer{
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    width: max-content;
+    margin: 15% auto;
+    padding: 50px;
+    border-radius: 10px;
+    border: 10px dashed rgb(111, 188, 255);
+}
+
+.startGameContainer{
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    width: max-content;
+    margin: 15% auto;
+    padding: 50px;
+    border-radius: 10px;
+    border: 10px dashed rgb(111, 188, 255);
+}
+
+body{
+    height: 100hv;
+}
