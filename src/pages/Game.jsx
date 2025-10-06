@@ -3,7 +3,6 @@ import { AnswerButton, ExcerciseText, Timer } from "../components";
 
 export function Game(){
     const [correctAnswers, setCorrectAnswers] = useState(0);
-    const [timer, setTimer] = useState(60);
     const [exercise, setExercise] = useState('71 + 13 =');
 
     const answers = [
@@ -15,7 +14,7 @@ export function Game(){
 
     return <>
         <div className="centerGameContainer">
-            <Timer time={ timer }></Timer>
+            <Timer></Timer>
             <ExcerciseText exercise={ exercise }></ExcerciseText>
             {
             answers.map((ans) => (
