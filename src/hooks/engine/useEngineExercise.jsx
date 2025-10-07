@@ -1,4 +1,6 @@
-import { useRandomNumber, useArithmeticOperator } from ".";
+import { useArithmeticOperator } from "./useArithmeticOperator";
+import { useRandomNumber } from "./useRandomNumber";
+
 
 export function useEngineExercise({ level })
 {
@@ -22,7 +24,7 @@ export function useEngineExercise({ level })
                 return firstNumber * secondNumber;
 
             case "/":
-                return firstNumber / secondNumber;
+                return (firstNumber / secondNumber).toFixed(3);
         }
     }
 
@@ -32,7 +34,7 @@ export function useEngineExercise({ level })
 
     while(answers.length < 4)
     {
-        const answer = correctAnswer + (Math.floor(-Math.random() * 10 * (Math.random() < 0.5 ? -1 : 1)));
+        const answer = correctAnswer + (Math.floor(Math.random() * 10 * (Math.random() < 0.5 ? -1 : 1)));
         if(!answers.includes(answer))
         {
             answers.push(answer);

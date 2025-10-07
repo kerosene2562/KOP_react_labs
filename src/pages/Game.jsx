@@ -15,7 +15,7 @@ export function Game() {
                 <AnswerButton
                     key={ ans }
                     text={ ans }
-                    action={() => correctAnswer === ans ? setCorrectAnswers(correctAnswers + 1) : null}
+                    action={ () => correctAnswer === ans ? setCorrectAnswers(correctAnswers + 1) : null }
                 />
             ))}
             <p className="defaultText">correct answers: { correctAnswers }</p>
