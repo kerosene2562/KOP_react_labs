@@ -1,5 +1,6 @@
-import { useEngineExercise } from "./useEngineExercise";
-import { useRandomNumber } from "./useRandomNumber";
-import { useArithmeticOperator } from "./useArithmeticOperator";
+import { useEngineExercise } from "./engine/useEngineExercise";
+import { useRandomNumber } from "./engine/useRandomNumber";
+import { useArithmeticOperator } from "./engine/useArithmeticOperator";
+import { useTimer } from "./logic/useTimer";
 
-export { useEngineExercise, useRandomNumber, useArithmeticOperator };
+export { useEngineExercise, useRandomNumber, useArithmeticOperator, useTimer };
