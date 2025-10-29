@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { AnswerButton, ExcerciseText, Timer } from "../components";
+import { Button, ExcerciseText, Timer } from "../components";
 import { useEngineExercise } from "../hooks";
 
 export function Game() {
@@ -12,9 +12,10 @@ export function Game() {
             <ExcerciseText exercise={ exercise }></ExcerciseText>
             {
             shuffledAnswers.map((ans) => (
-                <AnswerButton
+                <Button
                     key={ ans }
                     text={ ans }
+                    className = { "answerButton" }
                     action={ () => correctAnswer === ans ? setCorrectAnswers(correctAnswers + 1) : null }
                 />
             ))}
