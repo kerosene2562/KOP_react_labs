@@ -1,4 +1,4 @@
-export function useArithmeticOperator({ level })
+export function getArithmeticOperator({ level })
 {
     const operators = ['+', '-', '/', '*'];
 

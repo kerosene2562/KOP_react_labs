@@ -1,4 +1,6 @@
-export function Button({ text, action, className })
+import "./Button.css";
+
+export function Button({ id, text, action, className, type })
 {
-    return <button className={ className } onClick={ action }>{ text }</button>
+    return <button id={ id } className={ className } onClick={ action } type={ type }>{ text }</button>
 }
