@@ -1,0 +1,31 @@
+.header{
+    box-sizing: border-box;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(105, 105, 105);
+    padding: 5px;
+}
+
+.gameName{
+    display: flex;
+    gap: 20px;
+}
+
+.logo{
+    height: 50px;
+    width: 50px;
+}
+
+.logoContainer{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.userPanel{
+    display: flex;
+    gap: 20px;
+}

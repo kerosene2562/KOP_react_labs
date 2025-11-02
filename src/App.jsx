@@ -1,16 +1,15 @@
-import { Game } from "./pages/Game.jsx";
-import { Result } from "./pages/Results.jsx";
-import { getUserStats, updateUserStats } from "./modules/User.jsx"
-import { Start } from "./pages/Start.jsx";
+import { Game, Result, Start, Settings  } from "./pages";
+import { getUserStats } from "./modules/User.jsx"
 import { useState } from "react";
 
 function App() {
-  const [currantPage, setCurrentPage] = useState('game');
+  const [currantPage, setCurrentPage] = useState('settings');
 
   return(
     <>
       {currantPage == "start" ? <Start /> : null}
       {currantPage == "game" ? <Game /> : null}
+      {currantPage == "settings" ? <Settings /> : null}
       {currantPage == "result" ? <Result user={ getUserStats() } /> : null}
     </>
   );

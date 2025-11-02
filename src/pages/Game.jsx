@@ -1,12 +1,14 @@
 import { useState } from "react"
-import { Button, ExcerciseText, Timer } from "../components";
+import { Button, ExcerciseText, Timer, Header } from "../components";
 import { useEngineExercise } from "../hooks";
 
 export function Game() {
     const [correctAnswers, setCorrectAnswers] = useState(0);
-    const { exercise, correctAnswer, shuffledAnswers } = useEngineExercise({ level: 'easy' });
+    const level = JSON.parse(localStorage.getItem('difficult'));
+    const { exercise, correctAnswer, shuffledAnswers } = useEngineExercise({ level });
 
     return <>
+        <Header></Header>
         <div className="centerGameContainer">
             <Timer></Timer>
             <ExcerciseText exercise={ exercise }></ExcerciseText>

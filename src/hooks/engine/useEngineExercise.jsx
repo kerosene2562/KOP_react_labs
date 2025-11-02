@@ -1,12 +1,11 @@
-import { useArithmeticOperator } from "./useArithmeticOperator";
-import { useRandomNumber } from "./useRandomNumber";
-
+import { getCountOfAnswers, getArithmeticOperator, getRandomNumber } from "../../utils";
 
 export function useEngineExercise({ level })
 {
-    const firstNumber = useRandomNumber({ level });
-    const secondNumber = useRandomNumber({ level });
-    const operation = useArithmeticOperator({ level });
+    const firstNumber = getRandomNumber({ level });
+    const secondNumber = getRandomNumber({ level });
+    const operation = getArithmeticOperator({ level });
+    const countOfAnswers = getCountOfAnswers({ level });
 
     const exercise = `${firstNumber} ${operation} ${secondNumber} = ?`;
 
@@ -32,7 +31,7 @@ export function useEngineExercise({ level })
     
     const answers = [correctAnswer];
 
-    while(answers.length < 4)
+    while(answers.length < countOfAnswers)
     {
         const answer = correctAnswer + (Math.floor(Math.random() * 10 * (Math.random() < 0.5 ? -1 : 1)));
         if(!answers.includes(answer))
