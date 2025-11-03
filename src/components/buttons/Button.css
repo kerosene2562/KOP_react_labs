@@ -43,3 +43,10 @@
     width: 30px;
     height: 30px;
 }
+
+.restartButton{
+    background-color: red;
+    border-radius: 5px;
+    width: 150px;
+    height: 50px;
+}
