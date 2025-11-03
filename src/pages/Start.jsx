@@ -9,7 +9,7 @@ export function Start(){
         <div className="startGameContainer">
             <Button className = { "startButton" } text = { "start" } action = { () =>  setGameState('started') } />
             <Button className={ "settingsButton" } text = { "налаштування" } action = {() => setShowSettings(true) } />
-            <Portal isOpen = { showSettings } onClose = { () => setShowSettings(false) }>
+            <Portal isOpen = { showSettings } onClose = { () => setShowSettings(false) } headerText = { "оберіть складність" }>
                 <SettingsForm/>
             </Portal>
         </div>

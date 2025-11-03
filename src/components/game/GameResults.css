@@ -1,0 +1,12 @@
+.retultsContainer{
+    height: min-content;
+    width: max-content;
+    margin: 5px;
+}
+
+.restartButtonContainer{
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
