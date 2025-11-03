@@ -1,0 +1,17 @@
+.modalPortal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgb(146, 189, 248);
+    transform: translate(-50%, -50%);
+    height: min-content;
+    width: min-content;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modalHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}

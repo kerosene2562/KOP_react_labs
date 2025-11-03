@@ -1,0 +1,8 @@
+.difficultContainer{
+    display: flex;
+    height: min-content;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    margin: 5px;
+}

@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react"
-import { Button } from "../components"
+import { Button, SettingsForm, Portal } from "../components"
 
 export function Start(){
     const [gameState, setGameState] = useState('not started');
+    const [showSettings, setShowSettings] =useState(false);
     
     return <>
         <div className="startGameContainer">
-            <Button className = { "startButton" } text = { "start" } action = { () =>  setGameState('started')} />
+            <Button className = { "startButton" } text = { "start" } action = { () =>  setGameState('started') } />
+            <Button className={ "settingsButton" } text = { "налаштування" } action = {() => setShowSettings(true) } />
+            <Portal isOpen = { showSettings } onClose = { () => setShowSettings(false) }>
+                <SettingsForm/>
+            </Portal>
         </div>
     </>
 }
