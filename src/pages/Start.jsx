@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Button, SettingsForm, Portal } from "../components"
+import { useNavigate } from "react-router";
+import { getUuid } from "../utils";
+import styles from "../styles/index.module.css";
 
 export function Start(){
-    const [gameState, setGameState] = useState('not started');
-    const [showSettings, setShowSettings] =useState(false);
+    const [showSettings, setShowSettings] = useState(false);
+    const navigate = useNavigate();
+
+    let uuid = getUuid();
     
     return <>
-        <div className="startGameContainer">
-            <Button className = { "startButton" } text = { "start" } action = { () =>  setGameState('started') } />
+        <div className={ styles.startGameContainer }>
+            <Button className = { "startButton" } text = { "start" } action = { () =>  navigate(`/game/${uuid}`) } />
             <Button className={ "settingsButton" } text = { "налаштування" } action = {() => setShowSettings(true) } />
             <Portal isOpen = { showSettings } onClose = { () => setShowSettings(false) } headerText = { "оберіть складність" }>
                 <SettingsForm/>

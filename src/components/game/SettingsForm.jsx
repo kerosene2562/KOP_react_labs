@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "..";
 import { useForm } from "react-hook-form";
-import "./SettingsForm.css";
+import styles from "./SettingsForm.module.css";
 
 export function SettingsForm()
 {
@@ -26,8 +26,8 @@ export function SettingsForm()
     }
 
     return <>
-        <form className="settingsForm" onSubmit={ handleSubmit(onSubmit) }>
-            <div className="difficultContainer">
+        <form className= { styles.settingsForm } onSubmit={ handleSubmit(onSubmit) }>
+            <div className= { styles.difficultContainer }>
                 <Button id = {"easy"} className={ getButtonClass("easy") } type = { "submit" } text = { "easy" } action = { () => setGameDifficult("easy") } />
                 <Button id = {"medium"} className={ getButtonClass("medium") } type = { "submit" } text = { "medium" } action = { () => setGameDifficult("medium") } />
                 <Button id = {"hard"} className={ getButtonClass("hard") } type = { "submit" } text = { "hard" } action = { () => setGameDifficult('hard') } />

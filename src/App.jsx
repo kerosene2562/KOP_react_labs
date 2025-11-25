@@ -1,16 +1,20 @@
 import { Game, Result, Start  } from "./pages";
-import { getUserStats } from "./modules/User.jsx"
-import { useState } from "react";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router";
+import { Layout } from "./components/index.jsx";
 
 function App() {
-  const [currantPage, setCurrentPage] = useState('game');
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={ <Layout></Layout> }>
+        <Route path="/start" element={<Start/>}/>
+        <Route path="/game/:userId" element={<Game/>}/>
+        <Route path="/results/:userId" element={ <Result/>}/>
+      </Route>
+    )
+  )
 
   return(
-    <>
-      {currantPage == "start" ? <Start /> : null}
-      {currantPage == "game" ? <Game /> : null}
-      {currantPage == "result" ? <Result user={ getUserStats() } /> : null}
-    </>
+    <RouterProvider router={router}/>
   );
 }
 

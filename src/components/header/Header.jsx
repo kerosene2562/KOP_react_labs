@@ -1,21 +1,21 @@
-import "./Header.css"
+import { useNavigate } from "react-router"
+import styles from "./Header.module.css"
+import { Button } from "../buttons/Button";
+import { getUuid } from "../../utils";
 
 export function Header()
 {
+    const navigate = useNavigate();
+    const uuid = getUuid();
     return <>
-        <div className="header">
-            <div className="gameName">
-                <div className="logoContainer">
-                    <img src="src/assets/logo.png" alt="logo" className="logo"/>
-                </div>
-                <div className="name">
-                    <p>mathbro</p>
-                </div>
+        <div className={ styles.header }>
+            <div className={ styles.nameContainer }>
+                <p className={ styles.name }>Mathbro</p>
             </div>
 
-            <div className="userPanel">
-                <p>settings</p>
-                <p>results</p>
+            <div className= { styles.userPanel }>
+                <Button className="headerButton" action={ () => navigate(`/game/${uuid}`)} text="Game"></Button>
+                <Button className="headerButton" action={ () => navigate(`/results/${uuid}`)} text="Results"></Button>
             </div>
         </div>
     </>

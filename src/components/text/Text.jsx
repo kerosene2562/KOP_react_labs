@@ -1,8 +1,8 @@
-import "./Text.css";
+import styles from "./Text.module.css";
 
 export function Text({ text, className })
 {
     return <>
-        <p className= { className } >{ text }</p>
+        <p className= { styles[className] } >{ text }</p>
     </>
 }
