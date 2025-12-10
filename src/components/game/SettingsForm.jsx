@@ -2,27 +2,31 @@ import { useEffect, useState } from "react";
 import { Button } from "..";
 import { useForm } from "react-hook-form";
 import styles from "./SettingsForm.module.css";
+import { useDispatch } from "react-redux";
+import { setDifficulty } from "../../features/settings/settingsSlice";
 
 export function SettingsForm()
 {
     const [difficult, setGameDifficult] = useState('easy');
     const {register, handleSubmit, formState: { errors }} = useForm();
+    const dispatch = useDispatch();
 
     const onSubmit = () => {
-        localStorage.setItem('difficult', JSON.stringify(difficult));
+        dispatch(setDifficulty(difficult));
+        //localStorage.setItem('difficult', JSON.stringify(difficult));
     }
 
-    useEffect(() => {
-        let savedDifficult = localStorage.getItem('difficult');
-        if(difficult)
-        {
-            setGameDifficult(JSON.parse(savedDifficult));
-        }
-    }, []);
+    // useEffect(() => {
+    //     let savedDifficult = localStorage.getItem('difficult');
+    //     if(difficult)
+    //     {
+    //         setGameDifficult(JSON.parse(savedDifficult));
+    //     }
+    // }, []);
 
     const getButtonClass = (level) => 
     {
-        return difficult == level ? "selectedDifficultButton" : "difficultButton"
+        return difficult == level ? "selectedDifficultButton" : "difficultButton";
     }
 
     return <>

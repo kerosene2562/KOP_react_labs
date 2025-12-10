@@ -2,21 +2,24 @@ import { useEffect, useState } from "react"
 import { Button, Text, Timer, Portal, GameResults, SettingsForm } from "../components";
 import { useEngineExercise } from "../hooks";
 import { useNavigate, useParams } from "react-router";
-import styles from "../styles/index.module.css";
-import { saveGameResults } from "../utils";
+import styles from "./Game.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { incrementCorrectAnswersRTK, setLastGameCorrectAnswersRTK, incrementTotalTasksRTK, incrementTotalGamesRTK } from "../features/results/resultsSlice";
 
 export function Game() {
     const [correctAnswers, setCorrectAnswers] = useState(0);
+    const [totalTasks, setTotalTasks] = useState(0);
     const [time, setTime] = useState(5);
     const [timerKey, setTimerKey] = useState(0);
-    const [totalTasks, setTotalTasks] = useState(0);
-    const level = JSON.parse(localStorage.getItem('difficult'));
+    //const level = JSON.parse(localStorage.getItem('difficult'));
+    const level = useSelector(state => state.settings.difficulty);
     const { exercise, correctAnswer, shuffledAnswers } = useEngineExercise({ level });
     const [showResults, setShowResults] = useState(false);
     const navigate = useNavigate();
     const [showSettings, setShowSettings] = useState(false);
-
     const { userId } = useParams();
+    const dispatch = useDispatch();
+
     const uuid = localStorage.getItem("uuid");
     useEffect(() => {
         if(!userId || uuid != userId)
@@ -25,9 +28,13 @@ export function Game() {
 
     useEffect(() => {
         if(showResults)
-            saveGameResults({ uuid, correctAnswers, totalTasks });
+        {
+            dispatch(incrementCorrectAnswersRTK(correctAnswers));
+            dispatch(incrementTotalTasksRTK(totalTasks));
+            dispatch(setLastGameCorrectAnswersRTK(correctAnswers));
+            dispatch(incrementTotalGamesRTK());
+        }
     }, [showResults]);
-    
 
     const restartGame = () => {
         setTime(time);

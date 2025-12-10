@@ -1,0 +1,17 @@
+.resBox{
+    color: white;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    width: max-content;
+    margin: calc(25% - 150px) auto;
+    padding: 50px;
+    border-radius: 10px;
+    border: 10px dashed rgb(111, 188, 255);
+}
+
+body{
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}

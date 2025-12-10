@@ -10,11 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.3.0",
+    "@reduxjs/toolkit": "^2.11.1",
     "framer-motion": "^12.23.24",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.66.0",
+    "react-redux": "^9.2.0",
     "react-router": "^7.9.6",
+    "redux": "^5.0.1",
+    "redux-saga": "^1.4.2",
+    "redux-thunk": "^3.1.0",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

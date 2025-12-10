@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button, SettingsForm, Portal } from "../components"
 import { useNavigate } from "react-router";
 import { getUuid } from "../utils";
-import styles from "../styles/index.module.css";
+import styles from "./Start.module.css";
 
 export function Start(){
     const [showSettings, setShowSettings] = useState(false);
