@@ -1,13 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { v4 as uuidv4 } from "uuid";
 
-function getUserId() {
-    let id = localStorage.getItem("uuid");
-    if (!id) {
-        id = uuidv4();
-        localStorage.setItem("uuid", id);
+function getUserId() 
+{
+    try 
+    {
+        let id = localStorage.getItem("uuid");
+        if (!id) {
+            id = uuidv4();
+            localStorage.setItem("uuid", id);
+        }
+
+        return id;
+    } 
+    catch (e) 
+    {
+        console.error("Error accessing localStorage:", e);
+        return null;
     }
-    return id;
 }
 
 const userId = getUserId();
