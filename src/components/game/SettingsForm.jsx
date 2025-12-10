@@ -13,16 +13,15 @@ export function SettingsForm()
 
     const onSubmit = () => {
         dispatch(setDifficulty(difficult));
-        //localStorage.setItem('difficult', JSON.stringify(difficult));
     }
 
-    // useEffect(() => {
-    //     let savedDifficult = localStorage.getItem('difficult');
-    //     if(difficult)
-    //     {
-    //         setGameDifficult(JSON.parse(savedDifficult));
-    //     }
-    // }, []);
+    useEffect(() => {
+        let savedDifficult = localStorage.getItem('difficult');
+        if(difficult)
+        {
+            setGameDifficult(JSON.parse(savedDifficult));
+        }
+    }, []);
 
     const getButtonClass = (level) => 
     {
@@ -37,6 +36,5 @@ export function SettingsForm()
                 <Button id = {"hard"} className={ getButtonClass("hard") } type = { "submit" } text = { "hard" } action = { () => setGameDifficult('hard') } />
             </div>
         </form>
-        
     </>
 }

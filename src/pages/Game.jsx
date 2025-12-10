@@ -3,6 +3,7 @@ import { Button, Text, Timer, Portal, GameResults, SettingsForm } from "../compo
 import { useEngineExercise } from "../hooks";
 import { useNavigate, useParams } from "react-router";
 import styles from "./Game.module.css";
+import { saveGameResults } from "../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { incrementCorrectAnswersRTK, setLastGameCorrectAnswersRTK, incrementTotalTasksRTK, incrementTotalGamesRTK } from "../features/results/resultsSlice";
 
@@ -11,8 +12,8 @@ export function Game() {
     const [totalTasks, setTotalTasks] = useState(0);
     const [time, setTime] = useState(5);
     const [timerKey, setTimerKey] = useState(0);
-    //const level = JSON.parse(localStorage.getItem('difficult'));
-    const level = useSelector(state => state.settings.difficulty);
+    const levelLocal = JSON.parse(localStorage.getItem('difficult'));
+    let level = useSelector(state => state.settings.difficulty);
     const { exercise, correctAnswer, shuffledAnswers } = useEngineExercise({ level });
     const [showResults, setShowResults] = useState(false);
     const navigate = useNavigate();
@@ -25,6 +26,11 @@ export function Game() {
         if(!userId || uuid != userId)
             navigate("/start");
     }, []);
+
+    useEffect(() => {
+        if(levelLocal)
+            level = levelLocal;
+    }, [levelLocal])
 
     useEffect(() => {
         if(showResults)

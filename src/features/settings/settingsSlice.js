@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+const savedDifficulty = localStorage.getItem("difficult");
+
 const initialState = {
-    difficulty: "easy"
+    difficulty: savedDifficulty ? JSON.parse(savedDifficulty) : "easy"
 }
 
 const settingsSlice = createSlice({
@@ -10,6 +12,7 @@ const settingsSlice = createSlice({
     reducers: {
         setDifficulty: (state, action) => {
             state.difficulty = action.payload;
+            localStorage.setItem("difficult", JSON.stringify(action.payload));
         }
     }
 })
