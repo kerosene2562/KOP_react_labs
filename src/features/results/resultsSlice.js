@@ -39,19 +39,15 @@ const resultsSlice = createSlice({
     reducers: {
         incrementCorrectAnswersRTK: (state, action) => {
             state.correctAnswers += action.payload;
-            localStorage.setItem(`${userId}_gameSave`, JSON.stringify(state));
         },
         setLastGameCorrectAnswersRTK: (state, action) => {
             state.lastGameCorrectAnswers = action.payload;
-            localStorage.setItem(`${userId}_gameSave`, JSON.stringify(state));
         },
         incrementTotalGamesRTK: (state) => {
             state.totalGames += 1;
-            localStorage.setItem(`${userId}_gameSave`, JSON.stringify(state));
         },
         incrementTotalTasksRTK: (state, action) => {
             state.totalTasks += action.payload;
-            localStorage.setItem(`${userId}_gameSave`, JSON.stringify(state));
         }
     }
 })

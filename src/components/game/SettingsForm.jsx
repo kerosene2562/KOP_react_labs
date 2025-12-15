@@ -13,6 +13,7 @@ export function SettingsForm()
 
     const onSubmit = () => {
         dispatch(setDifficulty(difficult));
+        localStorage.setItem('difficult', JSON.stringify(difficult));
     }
 
     useEffect(() => {
@@ -36,5 +37,6 @@ export function SettingsForm()
                 <Button id = {"hard"} className={ getButtonClass("hard") } type = { "submit" } text = { "hard" } action = { () => setGameDifficult('hard') } />
             </div>
         </form>
+        
     </>
 }

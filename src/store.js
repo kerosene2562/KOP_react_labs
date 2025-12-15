@@ -9,3 +9,9 @@ export const store = configureStore({
         results: resultsSlice
     }
 })
+
+store.subscribe(() => {
+  const state = store.getState();
+  localStorage.setItem("difficult", JSON.stringify(state.settings.difficulty));
+  localStorage.setItem("gameSave", JSON.stringify(state.results));
+});

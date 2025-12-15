@@ -12,7 +12,6 @@ const settingsSlice = createSlice({
     reducers: {
         setDifficulty: (state, action) => {
             state.difficulty = action.payload;
-            localStorage.setItem("difficult", JSON.stringify(action.payload));
         }
     }
 })
