@@ -6,5 +6,6 @@ import { SettingsForm } from "./game/SettingsForm"
 import { Portal } from "./ui/Portal";
 import { GameResults } from "./game/GameResults";
 import { Layout } from "./ui/Layout";
+import { CookiePopup } from "./cookies/CookiePopup";
 
-export { Button, Timer, Text, Header, SettingsForm, Portal, GameResults, Layout };
+export { Button, Timer, Text, Header, SettingsForm, Portal, GameResults, Layout, CookiePopup };
