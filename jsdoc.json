@@ -1,0 +1,13 @@
+{
+    "source": {
+        "include": [
+            "src"
+        ],
+        "includePattern": ".+\\.(js|jsx)$",
+        "excludePattern": "(node_modules/|dist/|stories/)"
+    },
+    "opts": {
+        "destination": "docs",
+        "recurse": true
+    }
+}

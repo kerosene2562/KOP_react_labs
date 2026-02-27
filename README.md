@@ -64,23 +64,23 @@ The project demonstrates:
 ## Installation and Setup
 
 ### 1. Clone repository
-
+```bash
 git clone `<repository-link>`{=html} cd `<project-folder>`{=html}
-
+```
 ### 2. Install dependencies
-
+```bash
 npm install
-
+```
 ### 3. Run in development mode
-
+```bash
 npm run dev
-
+```
 Application runs at: http://localhost:5173
 
 ### 4. Build project
-
+```bash
 npm run build
-
+```
 Production build is generated in the dist/ folder.
 
 ------------------------------------------------------------------------
@@ -124,13 +124,13 @@ Props of each component are configurable via Storybook controls.
 Technical documentation is generated using JSDoc.
 
 To generate documentation:
-
+```bash
 npm run docs
-
+```
 After generation, open:
-
+```bash
 docs/index.html
-
+```
 Documentation includes:
 
 -   Component descriptions
@@ -175,7 +175,7 @@ The document explains:
 
 ## License
 
-This project is distributed under the MIT License.
+This project is distributed under the Apache 2.0 License.
 
 See the LICENSE file for full license text.
 
