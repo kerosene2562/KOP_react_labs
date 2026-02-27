@@ -65,7 +65,7 @@ The project demonstrates:
 
 ### 1. Clone repository
 ```bash
-git clone `<repository-link>`{=html} cd `<project-folder>`{=html}
+git clone https://github.com/kerosene2562/KOP_react_labs.git
 ```
 ### 2. Install dependencies
 ```bash
@@ -138,8 +138,7 @@ Documentation includes:
 -   Props documentation
 -   Core logic overview
 
-If documentation is not hosted publicly, a demonstration video showing
-local documentation usage should be provided.
+You can see documentation in [video](/doc.mp4)
 
 ------------------------------------------------------------------------
 
@@ -150,7 +149,7 @@ principles.
 
 Features:
 
--   Cookie category selection (Necessary / Analytics / Marketing)
+-   Cookie category selection (Necessary / Analytics)
 -   Accept All / Reject Non-Essential / Customize options
 -   User preferences stored in localStorage
 -   Link to Privacy Policy
@@ -161,11 +160,11 @@ Features:
 
 The repository contains a separate file:
 
-PRIVACY_POLICY.md or EULA.md
+[PRIVACY_POLICY.md](/PRIVACY_POLICY.md)
 
 The document explains:
 
--   Data processing (if any)
+-   Data processing
 -   Usage of localStorage
 -   User rights
 -   Usage limitations
@@ -177,11 +176,11 @@ The document explains:
 
 This project is distributed under the Apache 2.0 License.
 
-See the LICENSE file for full license text.
+See the [LICENSE](/LICENSE) file for full license text.
 
 A third-party dependency license report is available in:
 
-licenses-report.txt
+[licenses-report.txt](/license-report.txt)
 
 The report was generated using a license-checking tool to ensure
 open-source license compliance.
