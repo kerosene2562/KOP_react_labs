@@ -1,6 +1,7 @@
 {
   "name": "lab1.1",
-  "private": true,
+  "license": "Apache-2.0",
+  "author": "Oleksandr Romanets",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -33,6 +34,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.4.0",
+    "license-checker": "^25.0.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16",
     "vite": "^7.1.7"
