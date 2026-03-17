@@ -1,49 +1,46 @@
 import { useEffect, useState } from "react";
 import styles from "./CookiePopup.module.css";
-
-const CONSENT_KEY = "cookieConsentConfig";
+import {
+    CONSENT_EVENT,
+    defaultConsent,
+    getStoredConsent,
+    removePreferenceStorage,
+    removeStatisticsStorage,
+    saveConsent,
+} from "../../utils";
 
 export function CookiePopup() {
     const [visible, setVisible] = useState(false);
-
     const [consent, setConsent] = useState({
-        necessary: true,
+        ...defaultConsent,
         preferences: true,
         statistics: true,
-        marketing: false
     });
 
     useEffect(() => {
-        const saved = localStorage.getItem(CONSENT_KEY);
+        const saved = getStoredConsent();
 
         if (!saved) {
             setVisible(true);
             return;
         }
 
-        const parsed = JSON.parse(saved);
-
-        if (parsed.status === "declined") {
-            leaveWebsite();
-        }
+        setConsent(saved.categories);
     }, []);
 
-    function saveConsent(status, config) {
-        const payload = {
-            status,
-            categories: config,
-            timestamp: new Date().toISOString()
-        };
+    function applyConsent(status, config) {
+        saveConsent(status, config);
 
-        localStorage.setItem(CONSENT_KEY, JSON.stringify(payload));
-    }
-
-    function leaveWebsite() {
-        if (window.history.length > 1) {
-            window.history.back();
-        } else {
-            window.location.href = "/start";
+        if (!config.preferences) {
+            removePreferenceStorage();
         }
+
+        if (!config.statistics) {
+            removeStatisticsStorage();
+        }
+
+        setConsent(config);
+        setVisible(false);
     }
 
     function handleToggle(category) {
@@ -56,44 +53,35 @@ export function CookiePopup() {
     }
 
     function acceptAll() {
-        const fullConsent = {
+        applyConsent("accepted", {
             necessary: true,
             preferences: true,
             statistics: true,
-            marketing: false
-        };
-
-        saveConsent("accepted", fullConsent);
-        setVisible(false);
+            marketing: false,
+        });
     }
 
     function declineNonEssential() {
-        const minimalConsent = {
+        applyConsent("declined", {
             necessary: true,
             preferences: false,
             statistics: false,
-            marketing: false
-        };
-
-        saveConsent("declined", minimalConsent);
-        leaveWebsite();
+            marketing: false,
+        });
     }
 
     function savePreferences() {
-        saveConsent("custom", consent);
-        setVisible(false);
+        applyConsent("custom", consent);
     }
 
-    if (!visible) return null;
-
-    return (
+    return visible ? (
         <div className={styles.overlay} role="dialog" aria-modal="true">
             <div className={styles.popup}>
                 <h3 className={styles.title}>Cookie & Privacy Settings</h3>
 
                 <p className={styles.text}>
-                    This application uses browser storage (localStorage).
-                    You can configure which categories you allow.
+                    This application uses browser storage. Necessary storage keeps the app working,
+                    preferences save difficulty, and statistics save your game results.
                 </p>
 
                 <div className={styles.category}>
@@ -110,7 +98,7 @@ export function CookiePopup() {
                             checked={consent.preferences}
                             onChange={() => handleToggle("preferences")}
                         />
-                        <span><b>Preferences</b> – difficulty and user settings</span>
+                        <span><b>Preferences</b> – save selected difficulty</span>
                     </label>
                 </div>
 
@@ -121,7 +109,7 @@ export function CookiePopup() {
                             checked={consent.statistics}
                             onChange={() => handleToggle("statistics")}
                         />
-                        <span><b>Statistics</b> – game progress and results</span>
+                        <span><b>Statistics</b> – save total games and results history</span>
                     </label>
                 </div>
 
@@ -152,5 +140,5 @@ export function CookiePopup() {
                 </div>
             </div>
         </div>
-    );
+    ) : null;
 }

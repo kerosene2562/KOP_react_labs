@@ -5,3 +5,4 @@ import { getUuid } from "./getUuid";
 import { saveGameResults } from "./saveGameResults";
 
 export { getArithmeticOperator, getCountOfAnswers, getRandomNumber, getUuid, saveGameResults };
+export * from "./cookieConsent";

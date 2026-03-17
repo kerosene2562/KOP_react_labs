@@ -1,29 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { v4 as uuidv4 } from "uuid";
-/**
- * Redux slice responsible for storing and managing
- * user game statistics.
- *
- * The slice persists results in localStorage using
- * a unique user identifier (UUID).
- *
- * Stored statistics include:
- * - total correct answers
- * - last game correct answers
- * - total games played
- * - total tasks answered
- *
- * @module features/results/resultsSlice
- */
-/**
- * Retrieves or generates a persistent user UUID.
- *
- * If a UUID does not exist in localStorage,
- * a new one is generated and saved.
- *
- * @function getUserId
- * @returns {string|null} Unique user identifier or null if localStorage fails.
- */
+import { getResultsStorageKey, hasConsent } from "../../utils";
+
 function getUserId() {
     try {
         let id = localStorage.getItem("uuid");
@@ -40,20 +18,11 @@ function getUserId() {
     }
 }
 
-const userId = getUserId();
+getUserId();
 
-const savedResults = localStorage.getItem(`${userId}_gameSave`);
-/**
- * Initial Redux state for results slice.
- *
- * Loaded from localStorage if available.
- *
- * @type {Object}
- * @property {number} correctAnswers
- * @property {number} lastGameCorrectAnswers
- * @property {number} totalGames
- * @property {number} totalTasks
- */
+const savedResultsKey = hasConsent("statistics") ? getResultsStorageKey() : null;
+const savedResults = savedResultsKey ? localStorage.getItem(savedResultsKey) : null;
+
 const initialState = savedResults
     ? JSON.parse(savedResults)
     : {
@@ -67,44 +36,32 @@ const resultsSlice = createSlice({
     name: "results",
     initialState,
     reducers: {
-        /**
-         * Increments total correct answers.
-         * @param {Object} state
-         * @param {Object} action
-         * @param {number} action.payload - Number of correct answers to add.
-         */
         incrementCorrectAnswersRTK: (state, action) => {
             state.correctAnswers += action.payload;
         },
-
-        /**
-         * Sets correct answers count for the last completed game.
-         * @param {Object} state
-         * @param {Object} action
-         * @param {number} action.payload
-         */
         setLastGameCorrectAnswersRTK: (state, action) => {
             state.lastGameCorrectAnswers = action.payload;
         },
-
-        /**
-         * Increments total number of played games.
-         */
         incrementTotalGamesRTK: (state) => {
             state.totalGames += 1;
         },
-
-        /**
-         * Increments total number of answered tasks.
-         * @param {Object} state
-         * @param {Object} action
-         * @param {number} action.payload
-         */
         incrementTotalTasksRTK: (state, action) => {
             state.totalTasks += action.payload;
+        },
+        resetResultsRTK: (state) => {
+            state.correctAnswers = 0;
+            state.lastGameCorrectAnswers = 0;
+            state.totalGames = 0;
+            state.totalTasks = 0;
         }
     }
 })
 
-export const { incrementCorrectAnswersRTK, setLastGameCorrectAnswersRTK, incrementTotalGamesRTK, incrementTotalTasksRTK } = resultsSlice.actions;
+export const {
+  incrementCorrectAnswersRTK,
+  setLastGameCorrectAnswersRTK,
+  incrementTotalGamesRTK,
+  incrementTotalTasksRTK,
+  resetResultsRTK,
+} = resultsSlice.actions;
 export default resultsSlice.reducer;

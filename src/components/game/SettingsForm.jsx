@@ -3,15 +3,17 @@ import { Button } from "..";
 import styles from "./SettingsForm.module.css";
 import { useDispatch } from "react-redux";
 import { setDifficulty } from "../../features/settings/settingsSlice";
+import { CONSENT_EVENT, hasConsent } from "../../utils";
 
 const STORAGE_KEY = "difficulty";
 
 export function SettingsForm() {
   const [difficulty, setDifficultyState] = useState("easy");
+  const [preferencesAllowed, setPreferencesAllowed] = useState(hasConsent("preferences"));
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem("difficult");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -20,13 +22,25 @@ export function SettingsForm() {
           dispatch(setDifficulty(parsed));
         }
       } catch {
+        // ignore invalid value in storage
       }
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    const syncConsent = () => setPreferencesAllowed(hasConsent("preferences"));
+    window.addEventListener(CONSENT_EVENT, syncConsent);
+
+    return () => window.removeEventListener(CONSENT_EVENT, syncConsent);
+  }, []);
+
   const save = () => {
     dispatch(setDifficulty(difficulty));
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(difficulty));
+
+    if (hasConsent("preferences")) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(difficulty));
+      localStorage.setItem("difficult", JSON.stringify(difficulty));
+    }
   };
 
   const getButtonClass = (level) =>
@@ -34,6 +48,12 @@ export function SettingsForm() {
 
   return (
     <div className={styles.settingsForm}>
+      {!preferencesAllowed && (
+        <p className="defaultText">
+          Preference cookies are disabled, so difficulty will work only for the current session.
+        </p>
+      )}
+
       <div className={styles.difficultContainer}>
         <Button
           id="easy"
